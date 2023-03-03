@@ -3,7 +3,9 @@ A simple application to keep all your running courses and share it with other us
 
 ## Screenshots
 Home page
-![Home page](/screenshots/home.png =250x250)
+![Home page]
+<img src="/screenshots/home.png" width="100" height="100">
+(/screenshots/home.png =250x250)
 
 Courses page
 ![Courses page](/screenshots/courses_list.png =250x250)
