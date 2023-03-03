@@ -4,14 +4,14 @@ A simple application to keep all your running courses and share it with other us
 ## Screenshots
 Home page
 
-<img src="/screenshots/home.png" width="650" height="700">
+<img src="/screenshots/home.png" width="650" height="600">
 
 
 Courses page
 
-<img src="/screenshots/courses_list.png" width="650" height="700">
+<img src="/screenshots/courses_list.png" width="650" height="600">
 
 
 Add new Course page
 
-<img src="/screenshots/add_courses.png" width="650" height="700">
+<img src="/screenshots/add_courses.png" width="650" height="600">
