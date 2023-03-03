@@ -5,7 +5,7 @@ Coursee is a simple application that keeps track all of your running courses and
 The app is designed using the Ruby on Rails framework and leaflet plugin.
 
 ## Features
-- Draw and running courses on map
+- Draw running courses on map
 - Save a screenshot of the courses path on map
 - Edit saved courses
 - See other user's running courses
