@@ -1,0 +1,113 @@
+<p id="notice"><%= notice %></p>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial_scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+<!-- plugin -->
+  <!--<link rel="stylesheet" href="/app/assets/stylesheets/L.Control.Locate.css" />
+  <script src="../../../public/js/L.Control.Locate.min.js"></script> !-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<!-- plugin -->
+</head>
+
+<div class="container-fluid banner py-5 text-center">
+    <h1><%= @marker.Title %></h1>
+</div>
+
+<div class="container-fluid py-3 justify-content-center" id="map"></div>
+<style type="text/css">
+  body {
+    padding: 20;
+    margin:  20;
+  }
+  #map {
+    height: 50vh;
+    width:50vw;
+  }
+</style>
+
+<script type="text/javascript">
+  var map = L.map('map').setView([<%= @marker.lat %>, <%= @marker.lon %>],15); // 地図の表示位置の指定
+  var osmUrl = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+  var osmAttrib = "Map data OpenstreetMap contributors";
+
+  // アイコンの設定
+  var mapIcon = L.icon({
+    iconUrl: "/images/leaflet/marker-icon.png",// マーカーアイコンの画像ファイルへのパス
+    shadowUrl: "/images/leaflet/marker-shadow.png",// マーカーの影の画像ファイルへのパス
+    iconAnchor: [13, 44], // マーカー画像内の緯度経度を示す点
+    popupAnchor: [0, -44] // ポップアップの表示位置調整　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+  });
+
+  //　タイルレイアの設定
+  L.tileLayer(osmUrl,{
+    attribution: osmAttrib,
+    maxZoom: 20,
+  }).addTo(map);
+
+  // マーカーの追加
+  L.marker([<%= @marker.lat %>, <%= @marker.lon %>], {icon: mapIcon}).addTo(map)
+  .bindPopup("<%= @marker.Title %>")
+  .openPopup();
+  
+  // Locate
+  var option = {
+    position: 'topright',
+    strings: {
+      title: "現在地を表示",
+      popup: "いまここ"
+    },
+    locateOptions: {
+      maxZoom: 16
+    }
+  }
+
+  var lc = L.control.locate(option).addTo(map);
+  //lc.start();
+
+</script>
+
+<div class="container-fluid py-3 text-center">
+  
+  <p>
+    <strong>Title:</strong>
+    <%= @marker.Title %>
+  </p>
+  
+  <p>
+    <strong>Lat:</strong>
+    <%= @marker.lat %>
+  </p>
+  
+  <p>
+    <strong>Lon:</strong>
+    <%= @marker.lon %>
+  </p>
+  
+  <p>
+    <strong>キョリ:</strong>
+  </p>
+  
+  <p>
+    <strong>目案時間:</strong>
+  </p>
+  
+  <p>
+    <strong>現在地からのキョリ:</strong>
+  </p>
+  
+  <%= link_to "スタート", class: 'btn btn-outline-primary' %> 
+  
+</div>
+
+
+<div class="d-flex my-3 justify-content-center">
+    
+  <%= link_to 'Edit', edit_marker_path(@marker) %> &emsp; |
+
+  &emsp; <%= link_to 'Back', markers_path %>
+    
+</div>

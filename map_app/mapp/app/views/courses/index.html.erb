@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container-fluid banner py-5 text-center">
+    <h1><%= link_to"🏃", courses_home_path %></h1>
+    <h1 class="ms-auto">Courses</h1>
+    <h1 class="ms-auto"></h1>
+</div>
+        
+
+<% @courses.each do |t| %>
+  <div class="container-fluid d-flex my-3 justify-content-center">
+    <%= image_tag t.imageLink, :width => '400', :height => '200'%> 
+  </div>
+  <div class="container-fluid d-flex my-3 justify-content-center">
+                  
+    <p><strong>Username :</strong> <%= t.username %>
+    <br><strong>Course name :</strong> <%= t.coursename %>
+    <br><strong>Distance :</strong> <%= t.distance %> Km
+    <br><strong>Time taken :</strong> <%= t.time %>分
+    <br><strong>Comment :</strong> <%= t.comment %>
+    <br>
+    <br><%= link_to 'Show', t, class: 'btn btn-light' %>
+    &emsp;<%= link_to 'Edit', edit_course_path(t), class: 'btn btn-light' %>
+    &emsp;<%= link_to 'Delete', t, class: 'btn btn-light', method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></p>
+  </div>
+<% end %>
+
+<div class="d-flex my-3 justify-content-center">
+    
+  <%= link_to 'Back', courses_home_path, class: 'btn btn-light' %>
+    
+</div>
+

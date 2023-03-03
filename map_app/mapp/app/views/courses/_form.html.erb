@@ -1,0 +1,57 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<%= form_for(course) do |f| %>
+  <% if course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :coursename ,"Course name"%>
+    <%= f.text_field :coursename, :required => 'required' %>
+  </div>
+​
+  <div class="field">
+    <%= f.label :distance ,"Distance"%>
+    <%= f.number_field :distance, :required => 'required', :min => 0, step: :any %>
+    Km
+  </div>
+​
+  <div class="field">
+    <%= f.label :time ,"Time taken"%>
+    <%= f.number_field :time, :required => 'required', :min => 0 %>
+    min
+  </div>
+​
+  <div class="field">
+    <%= f.label :comment ,"Comment"%>
+    <%= f.text_area :comment, :required => 'required' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :imageLink, "Images" %>
+    <%= f.file_field :imageLink, :required => 'required' %>
+  </div>
+  
+  <% if current_user %>
+    <%= f.hidden_field :userID, value: current_user.id %>
+    <%= f.hidden_field :username, value: current_user.username %>
+  <% end %>
+​
+  <div class="actions" class="container-fluid py-3  text-center btn btn-light">
+    <%= f.submit "Submit" %>
+  </div>
+  
+  
+<% end %>
+
+

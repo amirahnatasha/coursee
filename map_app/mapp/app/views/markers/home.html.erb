@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<head>
+    <link rel="stylesheet" href="https://unkpg.com/leaflet@1.6.0/dist/leaflet.css">
+    <style>
+        #mapid {height:500px; width: 100% }
+    </style>
+</head>
+
+<div class="container-fluid banner py-5 text-center">
+    <h1>ホーム</h1>
+</div>
+        
+<nav class="bg-light border navbar navbar-expand-md navbar-light">
+  <div class="container-fluid">
+    <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav me-auto mt-2">
+        <li class="nav-item"><a class="nav-link" href="/quote">会員情報</a></li>
+        <li class="nav-item"><a class="nav-link" href="/quote">アプリ設定</a></li>
+      </ul>
+      <ul class="navbar-nav ms-auto mt-2">
+        <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="mapid" class="container-fluid py-5 text-center"></div>
+
+<script src="https://unkpg.com/leaflet@1.6.0/dist/leaflet.css"></script>
+<script type="text/javascript">
+var mymap = L.map('mapid',{
+  center: [35.710063, 139.8107],
+  zoom: 16
+});
+ 
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
+  attribution: "&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>"
+}).addTo(mymap);
+ 
+L.marker([35.710063, 139.8107])
+  .addTo(mymap)
+  .bindPopup("スカイツリーはここ！")
+  .openPopup();
+  </script>
+
+<div class="container-fluid py-3  text-center">
+            
+  <!-- button to list -->
+  <%= link_to "一覧", markers_path, class: 'btn btn-outline-primary' %> 
+
+</div>
+        
+<div class="container-fluid py-3 text-center">
+            
+  <!-- button to upload course -->
+  <%= link_to "コース登録", new_marker_path, class: 'btn btn-outline-primary' %> 
+            
+</div>

@@ -1,0 +1,87 @@
+<head>
+    <title>Leaflet Demo5</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+     crossorigin=""></script>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.css" integrity="sha384-P9DABSdtEY/XDbEInD3q+PlL+BjqPCXGcF8EkhtKSfSTr/dS5PBKa9+/PMkW2xsY" crossorigin="anonymous">  
+<script src="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.js" integrity="sha384-N2S8y7hRzXUPiepaSiUvBH1ZZ7Tc/ZfchhbPdvOE5v3aBBCIepq9l+dBJPFdo1ZJ" crossorigin="anonymous"></script>
+      
+     <style>
+       #map { height: 400px; width:80% }
+     </style>
+    
+</head>
+
+<body>
+  
+  <div class="container-fluid banner py-5 text-center">
+    <h1><%= link_to"🏃", courses_home_path %></h1>
+    <h1 class="ms-auto">Add new course</h1>
+    <h1 class="ms-auto"></h1>
+  </div>
+  
+  <body>
+    <div class="container-fluid py-3 justify-content-center" id="map"></div>
+  </body>
+  
+  <div class="d-flex my-3 justify-content-center">
+      
+      <%= render 'form', course: @course %>
+      
+  </div>
+  
+  <div class="d-flex my-3 justify-content-center">
+    <%= link_to 'Back', courses_home_path, class: 'btn btn-light' %>
+  </div>
+  
+</body>
+
+<!-- map javascript -->
+<script src="dist/bundle.js"></script>
+
+<script>
+  var map = L.map('map').setView([35.48, 133.06], 13);
+  
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+
+L.control.ruler().addTo(map);
+
+var options = {
+          position: 'topleft',
+          lengthUnit: {
+            factor: 0.539956803,    //  from km to nm
+            display: 'Nautical Miles',
+            decimal: 2
+          }
+        };
+        
+  L.simpleMapScreenshoter().addTo(map);
+
+</script>
+
+<script>
+  import * as L from 'leaflet'
+// import script after leaflet
+  import {SimpleMapScreenshoter} from 'leaflet-simple-map-screenshoter'
+  
+  new SimpleMapScreenshoter().addTo(this.map)
+</script>
+
+<script src="https://unpkg.com/leaflet"></script>
+<script src="https://unpkg.com/leaflet-simple-map-screenshoter"></script>
+<script>
+  L.simpleMapScreenshoter().addTo(map);
+  
+  let pluginOptions = {
+    preventDownload : true
+  }
+</script>

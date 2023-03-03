@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <style>
+        .link {
+            color: black;
+        }
+        
+        .link:hover {
+            text-decoration:underline;
+        }
+    </style>
+</head>
+<div class="container-fluid banner py-5 text-center">
+    <h1>Sign up</h1>
+</div>
+
+<body>
+
+    <div class="container-fluid py-1 text-center">
+        <%= render 'form', user: @user %>
+    </div>
+    
+    <div class="container-fluid py-3  text-center">
+        Login <%= link_to 'here',sessions_new_path, class: 'link' %>
+    </div>
+</body>
+</html>

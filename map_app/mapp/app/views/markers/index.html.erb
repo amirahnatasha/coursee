@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container-fluid banner py-5 text-center">
+    <h1>一覧</h1>
+</div>
+        
+<nav class="bg-light border navbar navbar-expand-md navbar-light">
+  <div class="container-fluid">
+    <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav me-auto mt-2">
+        <li class="nav-item"><a class="nav-link" href="/quote">会員情報</a></li>
+        <li class="nav-item"><a class="nav-link" href="/quote">アプリ設定</a></li>
+      </ul>
+      <ul class="navbar-nav ms-auto mt-2">
+        <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<% @markers.each do |marker| %>
+  <div class="d-flex my-3 justify-content-center">
+                  
+    <p><%= marker.Title %>
+    <br> Latitude : <%= marker.lat %>
+    <br> Longitude : <td><%= marker.lon %></td>
+    <br>キョリ : 5 Km
+    <br>目案時間 : 30分
+    <br>現在地からのキョリ : 100 m
+    <br>
+    <br><%= link_to 'Show', marker, class: 'btn btn-outline-primary' %>
+    &emsp;<%= link_to 'Edit', edit_marker_path(marker), class: 'btn btn-outline-primary' %>
+    &emsp;<%= link_to 'Destroy', marker, class: 'btn btn-outline-primary', method: :delete, data: { confirm: 'Are you sure?' } %></p>
+            
+    <img src="https://images.squarespace-cdn.com/content/v1/53da532fe4b0acb5ce32585c/1488180664420-9MMC3MUZ3OOWFVVXQ5P3/Ronde+Hoep.PNG" width="200" height="200">
+                  
+  </div>
+<% end %>
+
+<div class="d-flex my-3 justify-content-center">
+    
+  <%= link_to 'Back', markers_home_path, class: 'btn btn-outline-primary' %>
+    
+</div>
+

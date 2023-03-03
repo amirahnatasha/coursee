@@ -1,0 +1,78 @@
+<%= form_for(marker) do |f| %>
+  <% if marker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(marker.errors.count, "error") %> prohibited this marker from being saved:</h2>
+
+      <ul>
+      <% marker.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :コース名 %>
+    <%= f.text_field :Title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lat %>
+    <%= f.text_field :lat, id: 'lat' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lon %>
+    <%= f.text_field :lon, id: 'lon' %>
+  </div>
+  
+  <div class="py-3" id="map"></div>
+  <style type="text/css">
+    #map {
+      width: 600px;
+      height: 400px;
+    }
+  </style>
+  
+  <script type="text/javascript">
+    
+    var map = L.map('map').setView([35.71018316234198, 139.81062579792984], 15);
+    var osmUrl = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+    var osmAttrib = "Map data OpenstreetMap contributors";
+    
+    var mapIcon = L.icon({
+      iconUrl: "/images/leaflet/marker-icon.png",
+      shadowUrl: "/images/leaflet/marker-shadow.png",
+      iconAnchor: [13, 44]
+    });
+    
+    //Tile Layer
+    L.tileLayer(osmUrl, {
+      attribution: osmAttrib,
+      maxZoom: 20,
+    }).addTo(map);
+    
+    var lat, lon, marker = null;
+    
+    //click event
+    map.on('click', function(e){
+      
+      if(marker)
+        map.removeLayer(marker) //delete previous click
+      
+      lat = e.latlng.lat; //obtain longitude&latitude of clicked location
+      lon = e.latlng.lng;
+      
+      document.getElementById('lat').value = lat;  //insert lon&lat into textbox
+      document.getElementById('lon').value = lon;
+      
+      marker = L.marker([lat, lon], {icon: mapIcon}).addTo(map); //add marker to map
+      
+    })
+    
+  </script>
+
+  <div class="py-3 actions">
+    <%= f.submit :コース追加 %>
+  </div>
+<% end %>

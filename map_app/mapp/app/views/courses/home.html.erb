@@ -1,0 +1,109 @@
+<p id="notice"><%= notice %></p>
+
+<head>
+    <link rel="stylesheet" href="https://unkpg.com/leaflet@1.6.0/dist/leaflet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        #mapid {height:400px; width:75% }
+    </style>
+</head>
+
+<div class="container-fluid banner py-5 text-center">
+    <h1>🏃</h1>
+    <h1 class ="ms-auto">Coursee</h1>
+    <h1 class ="ms-auto"> </h1>
+    
+</div>
+        
+<nav class="bg-light border navbar navbar-expand-md navbar-light">
+  <div class="container-fluid">
+    <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav d-flex ms-auto mt-2">
+        <li class="nav-item">
+          <button type="button" class="btn btn-light">
+            Profile
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-light">
+            Settings
+          </button>
+        </li>
+      </ul>
+      <ul class="navbar-nav d-flex ms-auto mt-2 navbar-right">
+        <% if logged_in? %>
+          <li class="nav-item">
+            <button type="button" class="btn btn-light">
+              <%= current_user.username %>
+            </button>
+          </li>
+        <%end%>
+        <li class="nav-item">&emsp; &emsp;</li>
+        <li class="nav-item">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal" style="">
+          Logout
+        </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Logout</h2>
+        </div>
+        <div class="modal-body">
+          <h3>Are you sure you want to logout？</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+          <%= link_to "Logout", logout_path, method: :delete, class: 'btn btn-light' %>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<div id="mapid" class="container-fluid py-5 text-center"></div>
+
+<script src="https://unkpg.com/leaflet@1.6.0/dist/leaflet.css"></script>
+<script type="text/javascript">
+    var mymap = L.map('mapid',{
+      center: [35.48, 133.06],
+      zoom: 16
+    });
+     
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
+      attribution: "&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>"
+    }).addTo(mymap);
+     
+    L.marker([35.48, 133.06])
+      .addTo(mymap);
+  </script>
+
+<div class="container-fluid py-3  text-center">
+            
+  <!-- button to list -->
+  <%= link_to "Courses", courses_path, class: 'btn btn-light' %> 
+
+</div>
+        
+<div class="container-fluid py-3 text-center">
+            
+  <!-- button to upload course -->
+  <%= link_to "Add new course", new_course_path, class: 'btn btn-light' %> 
+            
+</div>
+

@@ -1,0 +1,17 @@
+<% @markers.each do |marker| %>
+  <div class="d-flex my-3 justify-content-center">
+                  
+    <p><%= marker.Title %>
+    <br> Latitude : <%= marker.lat %>
+    <br> Longitude : <td><%= marker.lon %></td>
+    <br>キョリ : 5 Km
+    <br>目案時間 : 30分
+    <br>現在地からのキョリ : 100 m
+    <br><%= link_to 'Show', marker %>
+    <br><%= link_to 'Edit', edit_marker_path(marker) %>
+    <br><%= link_to 'Destroy', marker, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+            
+    <img src="https://images.squarespace-cdn.com/content/v1/53da532fe4b0acb5ce32585c/1488180664420-9MMC3MUZ3OOWFVVXQ5P3/Ronde+Hoep.PNG" width="200" height="200">
+                  
+  </div>
+<% end %>

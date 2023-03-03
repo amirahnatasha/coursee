@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  courseID: 1
+  coursename: MyString
+  distance: 1.5
+  time: 1.5
+  comment: MyText
+  imageLink: MyString
+
+two:
+  courseID: 1
+  coursename: MyString
+  distance: 1.5
+  time: 1.5
+  comment: MyText
+  imageLink: MyString

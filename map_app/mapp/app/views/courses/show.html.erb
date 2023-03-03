@@ -1,0 +1,87 @@
+<p id="notice"><%= notice %></p>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial_scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+<!-- plugin -->
+  <!--<link rel="stylesheet" href="/app/assets/stylesheets/L.Control.Locate.css" />
+  <script src="../../../public/js/L.Control.Locate.min.js"></script> !-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<!-- plugin -->
+</head>
+
+<div class="container-fluid banner py-5 text-center">
+    <h1><%= link_to"🏃", courses_home_path %></h1>
+    <h1 class="ms-auto"><%= @course.coursename %></h1>
+    <h1 class="ms-auto"></h1>
+</div>
+
+<div class="container-fluid py-3 justify-content-center" id="map">
+  <%= image_tag @course.imageLink, :width => '100%', :height => '100%' %>
+  
+</div>
+<style type="text/css">
+  body {
+    padding: 20;
+    margin:  20;
+  }
+  #map {
+    height: 400px;
+    width:80%;
+  }
+</style>
+
+
+
+<div class="container-fluid py-3 text-center">
+  
+  <p>
+    <strong>Username:</strong>
+    <%= @course.username %>
+  </p>
+  
+  <p>
+    <strong>Course name:</strong>
+    <%= @course.coursename %>
+  </p>
+  
+  <p>
+    <strong>Distance:</strong>
+    <%= @course.distance %>
+    Km
+  </p>
+  
+  <p>
+    <strong>Time taken:</strong>
+    <%= @course.time %>
+    min
+  </p>
+  
+  <p>
+    <strong>Comment:</strong>
+    <%= @course.comment %>
+  </p>
+  
+</div>
+
+<div class="d-flex my-3 justify-content-center">
+  
+  <%= facebook_button %>
+  <%= twitter_button %>
+  <%= tumblr_button %>
+    
+</div>
+
+
+<div class="d-flex my-3 justify-content-center">
+  
+  <h4>
+  <%= link_to 'Edit', edit_course_path(@course) %> &emsp; |
+
+  &emsp; <%= link_to 'Courses', courses_path %>
+  </h4>
+    
+</div>

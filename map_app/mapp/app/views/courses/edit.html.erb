@@ -1,0 +1,16 @@
+<div class="container-fluid banner py-5 text-center">
+    <h1><%= link_to"🏃", courses_home_path %></h1>
+        <h1 class="ms-auto">コースを編集</h1>
+        <h1 class="ms-auto"></h1>
+</div>
+
+<div class="d-flex my-3 justify-content-center">
+      
+      <%= render 'form', course: @course %>
+      
+</div>
+
+<div class="d-flex my-3 justify-content-center">
+    <%= link_to '表示', @course %> &emsp; |  &emsp;
+    <%= link_to '一覧', courses_path %>
+ </div>

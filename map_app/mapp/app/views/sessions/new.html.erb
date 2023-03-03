@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<p id="notice"><%= notice %></p>
+<html>
+<head>
+    <meta>
+    <title>Login</title>
+    
+    <style>
+        .input {
+            display: block;
+            margin: auto;
+        }
+        
+        .link {
+            font-color:black;
+        }
+        
+        .link:hover{
+            text-decoration: underline;
+            background-color: white;
+        }
+
+
+        
+        .image-placeholder {
+            text-align: center;
+        
+            margin: auto;
+            margin-top: 20px;
+        
+            height: 130px;
+            font-size: 150px;
+        }
+        
+    </style>
+    
+</head>
+<div class="container-fluid banner py-5 text-center">
+    <h1>Coursee</h1>
+</div>
+<body>
+    <div class="container-fluid py-3  text-center">
+        <p class="image-placeholder py-3">
+            🏃
+        </p> 
+    </div>
+    
+    <%= form_tag '/login' do %>
+    <div class="container-fluid py-1 text-center">
+        <%= label_tag :username, "Username"%>
+        <%= text_field_tag :username %>
+    </div>
+    <div class="container-fluid py-1  text-center">
+        <%= label_tag :password, "Password"%>
+        <%= password_field_tag :password%>
+    </div>
+    <div class="container-fluid py-3 text-center">
+        <%= submit_tag "Login", class: 'btn btn-light'%>
+    </div>
+    <%end%> 
+    
+    <div class="container-fluid py-3  text-center">
+        Sign up <%= link_to ' here',new_user_path%>
+    </div>
+</body>
+</html>

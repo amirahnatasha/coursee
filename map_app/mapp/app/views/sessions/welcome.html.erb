@@ -1,0 +1,9 @@
+<h1>Welcome</h1>
+<% if logged_in? %>
+    <h1>You are Logged In, <%= current_user.username %></h1>
+    <%= link_to 'Homepage', courses_home_path, class: 'btn btn-outline-primary' %>
+    <%= link_to "Logout", logout_path, method: :delete %>
+<% else %>
+    <%= button_to "Login", '/login', method: :get%>
+    <%= button_to "Sign Up", '/users/new', method: :get%>
+<%end%>
